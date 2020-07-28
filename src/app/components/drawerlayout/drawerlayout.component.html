@@ -1,0 +1,25 @@
+<div class="content-wrap">
+
+    <igx-nav-drawer id="navigation" #drawer [isOpen]="true" [pinThreshold]="5000">
+        <ng-template igxDrawer>
+            <nav>
+                <span igxDrawerItem [isHeader]="true">
+                    <igx-avatar class="img_team" src="../../../assets/img/Logo.png" size="large"></igx-avatar>
+                    Venados Test</span>
+
+                <span *ngFor="let item of navItems" igxDrawerItem [active]="item.name === selected" igxRipple (click)="navigate(item)" [routerLink]="[item.name]">
+                <igx-icon fontSet="material" >{{ item.icon }}</igx-icon>
+                <span >{{ item.text }}</span>
+                </span>
+            </nav>
+        </ng-template>
+    </igx-nav-drawer>
+
+    <main>
+        <span igxButton="icon" igxToggleAction="navigation">
+            <igx-icon fontSet="material">menu</igx-icon>
+        </span>
+        <span class="text_select">{{selectedText}}</span>
+    </main>
+
+</div>

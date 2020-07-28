@@ -1,0 +1,30 @@
+<div class="layout-box" igxLayout igxLayoutDir="column">
+    <div style="border-bottom: thin; border-color: white;" igxLayout>
+
+        <div class="layout-box__el Text1" igxFlex>Tabla General</div>
+        <div class="layout-box__el2" igxLayout>
+            <div class="Text2" igxFlex>JJ</div>
+            <div class="Text2" igxFlex>DG</div>
+            <div class="Text2" igxFlex>DP</div>
+            <div class="Text2" igxFlex>PTS</div>
+        </div>
+    </div>
+
+    <!-- NGFOR -->
+    <div class="body_Home" igxLayout *ngFor="let stadistic of arrStadistics">
+        <div class="layout-box__el" igxLayout>
+            <div class="Text-Posicion" igxFlex>{{stadistic.position}}</div>
+            <div igxFlex>
+                <igx-avatar class="img_team" src="{{stadistic.image}}" size="medium"></igx-avatar>
+            </div>
+            <div class="Text-Equipo" igxFlex>{{stadistic.team}}</div>
+        </div>
+        <div class="layout-box__el2" igxLayout>
+            <div class="Text-Resultados" igxFlex>{{stadistic.games}}</div>
+            <div class="Text-Resultados" igxFlex>{{stadistic.win}}</div>
+            <div class="Text-Resultados" igxFlex>{{stadistic.loss}}</div>
+            <div class="Text-Resultados" igxFlex>{{stadistic.points}}</div>
+        </div>
+    </div>
+
+</div>

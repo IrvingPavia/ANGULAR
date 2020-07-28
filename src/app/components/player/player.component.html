@@ -1,0 +1,60 @@
+<div class="layout-box body_Home" igxLayout igxLayoutDir="row" igxLayoutWrap="wrap" igxLayoutJustify="space-around">
+    <!-- NGFOR -->
+
+    <div class="layout-box__el" igxLayout igxLayoutDir="column" igxFlexGrow="0" *ngFor="let player of arrPlayers">
+
+
+        <div igxButton class="layout-box__player" igxFlex (click)="form.open()">
+            <igx-avatar class="" src="{{player.image}}" size="large" roundShape="true"></igx-avatar>
+        </div>
+        <div *ngIf="player.role_short" class="Text1 size_14">{{player.role_short}}</div>
+        <div *ngIf="player.position_short" class="Text1 size_14">{{player.position_short}}</div>
+        <div class="Text1 size_12">{{player.name}} {{player.first_surname}}</div>
+
+        <igx-dialog #form [closeOnOutsideSelect]="true">
+
+            <igx-card class="ficha" igxLayout igxLayoutDir="column" igxLayoutItemAlign="center">
+
+                <igx-card-header class="ficha background_color_header" igxLayout igxLayoutDir="column" igxLayoutItemAlign="center">
+
+                    <div class="Text_Ficha color_text_header size_20" igxFlex>FICHA TÉCNICA</div>
+                    <div igxFlex>
+                        <igx-avatar src="{{player.image}}" size="large" roundShape="true"></igx-avatar>
+                    </div>
+                    <div class="Text_Ficha color_text_header size_14" igxFlex>{{player.name}} {{player.first_surname}} {{player.second_surname}}</div>
+                    <div *ngIf="player.position" class="Text_Ficha color_text_header size_12" igxFlex>{{player.position}}</div>
+                    <div *ngIf="player.number" class="Text_Ficha color_text_header size_12" igxFlex># {{player.number}}</div>
+                    <div *ngIf="player.role" class="Text_Ficha color_text_header size_12" igxFlex>{{player.role}}</div>
+                </igx-card-header>
+
+
+                <igx-card-content class="ficha background_color_content" igxFlex>
+
+                    <div class="Text_Ficha color_text_content size_20" igxFlex>FECHA DE NACIMIENTO</div>
+                    <div class="Text_Ficha color_text_content size_14" igxFlex>{{player.birthday | date:'dd/MM/yyyy'}}</div>
+
+                    <div class="Text_Ficha color_text_content size_20" igxFlex>LUGAR DE NACIMIENTO</div>
+                    <div class="Text_Ficha color_text_content size_14" igxFlex> {{player.birth_place}}</div>
+
+                    <div *ngIf="player.weight" class="Text_Ficha color_text_content size_20" igxFlex>PESO</div>
+                    <div *ngIf="player.weight" class="Text_Ficha color_text_content size_14" igxFlex>{{player.weight}} KG</div>
+
+                    <div *ngIf="player.height" class="Text_Ficha color_text_content size_20" igxFlex>ALTURA</div>
+                    <div *ngIf="player.height" class="Text_Ficha color_text_content size_14" igxFlex>{{player.height}} MTS</div>
+
+                    <div *ngIf="player.last_team" class="Text_Ficha color_text_content size_20" igxFlex>EQUIPO ANTERIOR</div>
+                    <div *ngIf="player.last_team" class="Text_Ficha color_text_content size_14" igxFlex>{{player.last_team}}</div>
+
+
+                    <button igxButton="icon" (click)="form.close()" igxRipple igxRippleCentered="true">
+                        <igx-icon>clear</igx-icon>
+                    </button>
+                </igx-card-content>
+
+
+
+            </igx-card>
+        </igx-dialog>
+
+    </div>
+</div>

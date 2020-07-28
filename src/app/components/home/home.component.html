@@ -1,0 +1,66 @@
+<div class="layout-box" igxLayout igxLayoutDir="column">
+    <div class="layout-box content img_Home" igxFlex>
+        <igx-avatar class="img_Home" src="../../../assets/img/Logo2.png" size="large"></igx-avatar>
+    </div>
+    <div class="layout-box__el body" igxFlex>
+        <div class="" igxLayout>
+            <div igxButton class="layout-box__el border_simple Text1" igxFlex (click)="getGamesByLiga('COM')">COPA MX</div>
+            <div igxButton class="layout-box__el border_simple Text1" igxFlex (click)="getGamesByLiga('LDA')">ASCENSO MX</div>
+        </div>
+    </div>
+    <div class="" igxFlex *ngFor="let month of arrMonths">
+
+        <div *ngIf="this.arrGamesByMonths[month.numMonth]" class="Text2 text_color" igxFlex>{{month.strMonth}}</div>
+        <div class="layout-box body_Home " igxLayout *ngFor="let game of this.arrGamesByMonths[month.numMonth]">
+            <div class="layout-box__el2" igxLayout>
+
+
+                <div class="layout-box_evento Text-Fecha" igxFlex>
+                    <span class="material-icons">event</span>
+                    <hr style="border: none;">
+                    <span>{{game.datetime | date:'dd'}}</span>
+                    <hr style="border: none;">
+                    <span>{{diaSemana(game.datetime)}}</span>
+                </div>
+
+                <div *ngIf="game.local; then Eguipo_Local else Eguipo_Visitante"></div>
+
+                <ng-template #Eguipo_Local>
+                    <div class="layout-box_equipo Text-Equipo" igxFlex>
+                        <igx-avatar class="img_team" src="../../../assets/img/Logo.png" size="medium"></igx-avatar>
+                        <hr style="border: none;">
+                        <span class="Text-Equipo">{{this.cEquipoLocal}}</span>
+                    </div>
+                    <div class="layout-box_marcador Text-Marcador" igxFlex>
+                        {{game.home_score}} - {{game.away_score}}
+                    </div>
+                    <div class="layout-box_equipo Text-Equipo" igxFlex>
+                        <igx-avatar class="img_team" src="{{game.opponent_image}}" size="medium"></igx-avatar>
+                        <hr style="border: none;">
+                        <span class="Text-Equipo">{{game.opponent}}</span>
+                    </div>
+                </ng-template>
+
+                <ng-template #Eguipo_Visitante>
+                    <div class=" layout-box_equipo Text-Equipo" igxFlex>
+                        <igx-avatar class="img_team" src="{{game.opponent_image}}" size="medium"></igx-avatar>
+                        <hr style="border: none;">
+                        <span class="Text-Equipo">{{game.opponent}}</span>
+                    </div>
+                    <div class="layout-box_marcador Text-Marcador" igxFlex>
+                        {{game.away_score}} - {{game.home_score}}
+                    </div>
+                    <div class="layout-box_equipo Text-Equipo" igxFlex>
+                        <igx-avatar class="img_team" src="../../../assets/img/Logo.png" size="medium"></igx-avatar>
+                        <hr style="border: none;">
+                        <span class="Text-Equipo">{{this.cEquipoLocal}}</span>
+                    </div>
+                </ng-template>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

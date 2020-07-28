@@ -1,18 +1,68 @@
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { FormsModule } from "@angular/forms";
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
+
+
+//RUTAS
+import {APP_ROUTING} from './app.routes';
+
+//SERVICES
+import {AppService} from './services/app.service'
+
+//COMPONENTES
 import { AppComponent } from './app.component';
+import { DrawerComponent } from "./components/drawerlayout/drawerlayout.component";
+import { HomeComponent } from './components/home/home.component';
+import { StadisticComponent } from './components/stadistic/stadistic.component';
+import { PlayerComponent } from './components/player/player.component';
+
+//IMPORTS
+import { 
+  IgxButtonModule, 
+  IgxIconModule, 
+  IgxNavigationDrawerModule, 
+  IgxActionStripComponent, 
+  IgxRippleModule, 
+  IgxToggleModule,
+  IgxAvatarModule,
+  IgxLayoutModule,
+  IgxDatePickerModule,
+  IgxDialogModule,
+  IgxCardModule } 
+from "igniteui-angular";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DrawerComponent,
+    HomeComponent,
+    StadisticComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    FormsModule,
+		IgxButtonModule,
+		IgxIconModule,
+		IgxNavigationDrawerModule,
+		IgxRippleModule,
+		IgxToggleModule,
+    IgxAvatarModule,
+    IgxLayoutModule,
+    IgxDatePickerModule,
+    IgxDialogModule,
+    IgxCardModule,
+    HttpClientModule,
+    APP_ROUTING
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    AppService
+  ],
+  bootstrap: [AppComponent]  
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  server: 'https://venados.dacodes.mx/api',
+  headerKey: 'Accept',
+  headerApp: 'application/json'
+
 };
 
 /*
